@@ -1,5 +1,5 @@
 # action.yml
-name: install-faas-cli
+name: openfaas-setup-cli
 description: 'Install faas-cli and put it on your path'
 branding:
   icon: 'package'
