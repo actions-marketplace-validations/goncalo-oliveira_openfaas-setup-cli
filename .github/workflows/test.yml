@@ -1,0 +1,19 @@
+name: Test CI
+
+on: 
+  pull_request:
+  push:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+
+  test-installation:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup faas-cli
+      id: build-simple
+      uses: './'
+    - name: Test faas-cli presence
+      run: faas-cli version --short-version

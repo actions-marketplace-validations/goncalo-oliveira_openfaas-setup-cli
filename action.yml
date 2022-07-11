@@ -1,0 +1,20 @@
+# action.yml
+name: install-faas-cli
+description: 'Install faas-cli and put it on your path'
+branding:
+  icon: 'package'
+  color: 'blue'
+inputs:
+  cli-version:
+    description: 'Optional faas-cli version to use. If not provided, will install latest.'
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        mkdir -p $HOME/.faas-cli
+        cd $HOME/.faas-cli
+        curl -sSL https://cli.openfaas.com | sh
+      shell: bash
+    - run:  echo /usr/local/bin/faas-cli >> $GITHUB_PATH
+      shell: bash
